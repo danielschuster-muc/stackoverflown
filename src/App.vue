@@ -1,92 +1,57 @@
+<script setup lang="ts">
+import { RouterView } from "vue-router";
+</script>
+
 <template>
-  <div class="app">
-    <div class="message">
-      <h1>Ha, I got you!</h1>
-      <p>{{ quote }}</p>
-    </div>
-    <div class="search-bar">
-      <input
-        type="text"
-        v-model="query"
-        placeholder="Search on Stack Overflow"
-        @keyup.enter="search"
-      />
-      <button @click="search" :disabled="query == ''">Search</button>
-    </div>
+  <div class="wrapper">
+    <main>
+      <RouterView />
+    </main>
+    <footer>
+      <a href="https://github.com/danielschuster-muc/stackoverflown">Source</a>
+      <p>Made with ❤ by Daniel Schuster</p>
+      <a href="https://danielschuster.me/legal-notice">Imprint</a>
+    </footer>
   </div>
 </template>
 
-<script lang="ts">
-import json from "@/assets/quotes.json";
-export default {
-  data() {
-    return {
-      quotes: json,
-      query: "",
-    };
-  },
-  methods: {
-    search() {
-      if (this.query) {
-        window.location.href = `https://stackoverflow.com/search?q=${this.query}`;
-      }
-      this.query = "";
-    },
-  },
-  computed: {
-    quote: function () {
-      return this.quotes[Math.trunc(Math.random() * this.quotes.length)];
-    },
-  },
-};
-</script>
-
 <style scoped>
-.app {
-  background-color: #000000;
+.wrapper {
+  background-color: #1b1b1b;
   color: #ea7809;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.message {
-  text-align: center;
+footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
 }
 
-.message h1 {
-  font-size: 5rem;
-  margin-bottom: 2rem;
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
-.search-bar {
-  margin-top: 2rem;
+a {
+  color: #ea7809;
 }
 
-.search-bar input {
-  width: 16rem;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 0.25rem;
-  margin-right: 0.5rem;
-}
-
-.search-bar button {
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
-  background-color: #ea7809;
-  color: #ffffff;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-.search-bar button:disabled {
-  background-color: #ea7809;
+a:hover {
   opacity: 0.7;
-  cursor: not-allowed;
 }
 </style>
