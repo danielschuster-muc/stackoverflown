@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header">
       <h1>Ha, I got you!</h1>
-      <!-- <view-counter class="view-counter" /> -->
+      <view-counter class="view-counter" />
     </div>
     <quote />
     <search-bar class="search-bar" />
@@ -13,7 +13,7 @@
 import json from "@/assets/quotes.json";
 
 import SearchBar from "@/components/SearchBar.vue";
-// import ViewCounter from "@/components/ViewCounter.vue";
+import ViewCounter from "@/components/ViewCounter.vue";
 import Quote from "@/components/Quote.vue";
 
 export default {
@@ -29,7 +29,7 @@ export default {
   },
   components: {
     SearchBar,
-    // ViewCounter,
+    ViewCounter,
     Quote,
   },
 };
