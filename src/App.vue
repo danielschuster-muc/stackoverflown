@@ -12,8 +12,11 @@ inject();
     </main>
     <footer>
       <a href="https://github.com/danielschuster-muc/stackoverflown">Source</a>
-      <p>Made with ❤ by Daniel Schuster</p>
-      <a href="https://danielschuster.me/legal-notice">Imprint</a>
+      <p>
+        Made with ❤ by
+        <a href="https://github.com/danielschuster-muc">Daniel Schuster</a>
+      </p>
+      <a href="https://danischu.com/legal-notice">Imprint</a>
     </footer>
   </div>
 </template>
@@ -43,18 +46,19 @@ footer {
   justify-items: center;
 }
 
+a {
+  color: #ea7809;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 768px) {
   footer {
     flex-direction: column;
     text-align: center;
   }
-}
-
-a {
-  color: #ea7809;
-}
-
-a:hover {
-  opacity: 0.7;
 }
 </style>
