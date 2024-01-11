@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-if="viewCount && viewCount > 0">{{ formattedViews }}</p>
+    <p v-if="viewCount && viewCount > 0">Just as {{ formattedViews }} others</p>
     <p v-else>...</p>
   </div>
 </template>
