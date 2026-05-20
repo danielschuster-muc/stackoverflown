@@ -10,22 +10,17 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      query: "",
-    };
-  },
-  methods: {
-    search() {
-      if (this.query) {
-        window.location.href = `https://stackoverflow.com/search?q=${this.query}`;
-      }
-      this.query = "";
-    },
-  },
-};
+<script setup lang="ts">
+import { ref } from "vue";
+
+const query = ref("");
+
+function search() {
+  if (query.value) {
+    window.location.href = `https://stackoverflow.com/search?q=${query.value}`;
+  }
+  query.value = "";
+}
 </script>
 
 <style scoped>
