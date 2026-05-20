@@ -1,53 +1,12 @@
 <template>
   <div>
-    <p v-if="viewCount && viewCount > 0">Just as {{ formattedViews }} others</p>
-    <p v-else>...</p>
+    <p>Just as {{ formattedViews }} others</p>
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      viewCount: 0,
-    };
-  },
-  async mounted() {
-    await this.incrementOrGetViews();
-  },
-  methods: {
-    async incrementOrGetViews() {
-      const hasNotViewed = localStorage.getItem("viewed") !== "true";
-
-      if (hasNotViewed) {
-        localStorage.setItem("viewed", "true");
-      }
-
-      const method = hasNotViewed ? "POST" : "GET";
-
-      const result = await fetch("/api/views", {
-        method,
-      })
-        .then((res) => {
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return res.json();
-        })
-        .catch(() => {
-          return { views: 0 };
-        });
-
-      const { views } = result;
-      this.viewCount = views;
-    },
-  },
-  computed: {
-    formattedViews() {
-      return new Intl.NumberFormat().format(this.viewCount);
-    },
-  },
-};
+<script setup lang="ts">
+const viewCount = Math.floor(Math.random() * (100_000 - 1_000 + 1)) + 1_000;
+const formattedViews = new Intl.NumberFormat().format(viewCount);
 </script>
 
 <style scoped>

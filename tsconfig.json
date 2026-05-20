@@ -3,7 +3,7 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
 
@@ -12,8 +12,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "allowSyntheticDefaultImports": true,
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -21,10 +19,10 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Type checking */
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
+  "include": ["src/**/*", "env.d.ts"],
   "references": [{ "path": "./tsconfig.config.json" }]
 }

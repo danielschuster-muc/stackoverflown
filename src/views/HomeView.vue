@@ -9,30 +9,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import json from "@/assets/quotes.json";
-
+<script setup lang="ts">
 import SearchBar from "@/components/SearchBar.vue";
 import ViewCounter from "@/components/ViewCounter.vue";
 import Quote from "@/components/Quote.vue";
-
-export default {
-  data() {
-    return {
-      quotes: json,
-    };
-  },
-  computed: {
-    quote: function () {
-      return this.quotes[Math.trunc(Math.random() * this.quotes.length)];
-    },
-  },
-  components: {
-    SearchBar,
-    ViewCounter,
-    Quote,
-  },
-};
 </script>
 
 <style>
